@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/schanaliya/mywebsite/docker_project/project3_frontend/frontend/node_modules
+      - .:/home/schanaliya/mywebsite/docker_project/project3_frontend/frontend
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - /home/schanaliya/mywebsite/docker_project/project3_frontend/frontend/node_modules
+      - .:/home/schanaliya/mywebsite/docker_project/project3_frontend/frontend
+    command: ["npm","run","test"]
